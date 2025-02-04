@@ -11,135 +11,117 @@ padding: 0;
 .navbar {
   background: rgb(145, 144, 144);
   padding: 15px 20px;
-  color: $text-color;
+  color: white;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan shadow */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Garis bawah */
+}
 
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
 
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 20px;
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-      img {
-        height: 50px;
-        width: auto;
-        margin-right: 10px;
-      }
-    }
+.logo img {
+  height: 30px;
+  width: auto;
+  
+}
 
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: $text-color;
-      font-size: 28px;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out;
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
 
-      &.open {
-        transform: rotate(90deg);
-      }
-    }
+.menu-toggle.open {
+  transform: rotate(90deg);
+}
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 40px;
-      margin-left: auto;
-      padding: 0;
+/* Styling Navbar Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin-left: auto;
+  padding: 0;
+}
 
-      li {
-        a {
-          color: $text-color;
-          text-decoration: none;
-          font-size: 18px;
-          font-weight: 600;
-          transition: color 0.3s ease-in-out;
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s ease-in-out;
+}
 
-          &:hover {
-            color: $primary-color;
-          }
-        }
-      }
-    }
+.nav-links li a:hover {
+  color: #3498db;
+}
 
-    .btn {
-      text-decoration: none;
-      padding: 8px 16px;
-      border: 2px solid $text-color;
-      border-radius: 25px;
-      color: $text-color;
-      font-weight: bold;
-      margin-left: 20px;
-      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+.btn {
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  margin-left: 20px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
 
-      &:hover {
-        background-color: $text-color;
-        color: $secondary-color;
-      }
-    }
+.btn:hover {
+  background-color: white;
+  color: rgba(44, 62, 80, 0.8);
+}
 
-    .mobile-btn {
-      display: none;
-    }
+/* RESPONSIVE STYLING */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    font-size: 30px;
   }
 
-  @media (max-width: $mobile-breakpoint) {
-    .menu-toggle {
-      display: block;
-      position: absolute;
-      right: 20px;
-      top: 15px;
-      font-size: 30px;
-      background: none;
-      border: none;
-      color: white;
-      z-index: 200;
-    }
-    .navbar-container
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(44, 62, 80, 0.9);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
 
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background-color: rgba(44, 62, 80, 0.9);
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      padding: 20px 0;
-      text-align: center;
-      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    }
+  .nav-links.active {
+    display: flex;
+  }
 
-    .nav-links.active {
-      display: flex;
-    }
+  .nav-links li {
+    margin: 15px 0;
+  }
 
-    .nav-links li {
-      margin: 15px 0;
-    }
+  .desktop-btn {
+    display: none;
+  }
 
-    .desktop-btn {
-      display: none;
-    }
-
-    .mobile-btn {
-      display: block;
-    }
+  .mobile-btn {
+    display: block;
   }
 }
 
@@ -151,90 +133,57 @@ padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $text-color;
+  color: white;
   background: url("../assets/kids.jpeg") no-repeat center center/cover;
-  
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-  }
+}
 
-  .content-wrapper {
-    position: relative;
-    display: flex;
-    width: 80%;
-    max-width: 1200px;
-  }
+.image-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
 
-  .content-wrapper {
-    display: flex;
-    justify-content: space-between; // Pastikan elemen diatur berjauhan
-    align-items: center;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 30px; // Memberikan sedikit ruang antar elemen
-  }
-  
-  .text-content {
-    flex: 1;
-    text-align: left; // Pastikan teks rata kiri
-    padding: 20px;
-  
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: white;
-    }
-  
-    .feature-list {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0;
-      
-      li {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-    }
-  
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #3498db;
-      color: white;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease-in-out;
-  
-      &:hover {
-        background: darken(#3498db, 10%);
-      }
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .content-wrapper {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .text-content {
-      text-align: center;
-    }
-  }
-  
+.content-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
 
+.text-content {
+  flex: 1;
+  text-align: left;
+  padding: 20px;
+}
 
+.text-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.feature-list li {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* FORM PADA CONTAINER */
 .container-box {
   flex: 1;
   background: white;
@@ -246,106 +195,157 @@ padding: 0;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   margin-top: 30px;
+  max-height: 600px;
+}
 
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    text-align: center;
-  }
+.container-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
 
-  label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
-  }
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-  .phone-input {
+.phone-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+}
+
+/* GRID KELAS */
+.class-selection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.class-selection button {
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f8f8f8;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
+}
+
+.class-selection button .price {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #3498db;
+  margin-top: 6px;
+}
+
+.class-selection button:hover {
+  background: #e0e0e0;
+}
+
+.class-selection button.selected {
+  background: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.class-selection button.selected .price {
+  color: white;
+}
+
+/* RADIO GROUP */
+.radio-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* CTA BUTTON */
+.cta-button {
+  width: 100%;
+  padding: 12px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+  background: #2563eb;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+  .image-section {
+    width: 100%;
+    max-width: 100vw; /* Pastikan tidak ada overflow horizontal */
+    height: 100vh; /* Buat tinggi section sesuai tinggi layar */
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 5px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+    padding: 5%;
+    box-sizing: border-box;
+  }
 
-    .flag {
-      font-weight: bold;
-    }
+  .content-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
 
-    input {
-      flex: 1;
-      border: none;
-      outline: none;
-    }
+  .text-content {
+    text-align: center;
+    padding: 5px;
+  }
+
+  .feature-list li {
+    justify-content: center;
+  }
+
+  .container-box {
+    display: none;
   }
 
   .class-selection {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); // 4 kolom dalam satu baris
-    gap: 10px;
-    margin-top: 10px;
+    grid-template-columns: repeat(2, 1fr); /* Ubah jadi 2 kolom untuk mobile */
+  }
 
-    button {
-        padding: 14px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background: #f8f8f8;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        text-align: center;
-        font-size: 16px;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 70px; // Supaya tombol lebih besar dan harga terlihat
-
-        .price {
-            display: block;
-            font-size: 14px;
-            font-weight: bold;
-            color: #3498db;
-            margin-top: 6px;
-        }
-
-        &:hover {
-            background: #e0e0e0;
-        }
-    }
-
-    button.selected {
-        background: #4CAF50;
-        color: white;
-        border: none;
-
-        .price {
-            color: white;
-        }
-    }
-}
-
-
+  .radio-group {
+    flex-direction: column;
+    align-items: center;
+  }
 
   .cta-button {
-    width: 100%;
-    padding: 12px;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background 0.3s ease-in-out;
-
-    &:hover {
-      background: #2563eb;
-    }
+    font-size: 1.2rem;
+    padding: 14px;
   }
 }
 
-}
 
 .why-choose-us {
   display: flex;
@@ -422,26 +422,6 @@ padding: 0;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
   }
-
-
-  @media (max-width: 900px) {
-    .why-content {
-      flex-direction: column;
-      text-align: center;
-      padding: 0 10px;
-
-      .text-section {
-        text-align: center;
-        max-width: 100%;
-      }
-
-      .section-image {
-        width: 100%;
-        height: 300px;
-        margin-top: 20px;
-      }
-    }
-  }
 }
 
 .modal {
@@ -478,21 +458,27 @@ padding: 0;
   font-size: 16px;
 }
 
+@media screen and (max-width: 768px) {
 
-@media (max-width: $mobile-breakpoint) {
-  .image-section {
-    flex-direction: column;
-    text-align: center;
-    padding: 5%;
+  .navbar {
+    .menu-toggle {
+      display: block;
+    }
   }
+  .why-choose-us {
+    .why-content {
+      flex-direction: column;
+      align-items: center;
 
-  .content-wrapper {
-    flex-direction: column;
-  }
+      .text-section { 
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-  .text-content,
-  .container-box {
-    width: 100%;
-    padding: 20px;
+      .section-image {
+        width: 100%;
+        height: 300px;  
+      }
+    }
   }
 }

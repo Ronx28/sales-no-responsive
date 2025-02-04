@@ -44,26 +44,30 @@ const CodingForKids = () => {
 
     return (
         <>
-            <nav className="navbar">
-                <div className="navbar-container">
-                    <a href="/" className="logo">
-                        <img src={logo} alt="LEVEL UP Logo" />
-                    </a>
-                    {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-<button className={`menu-toggle ${isOpen ? "open" : ""}`} onClick={toggleMenu} aria-label="Toggle Navigation">
-                        {isOpen ? "✖" : "☰"}
-                    </button>
-                    <ul className={`nav-links ${isOpen ? "active" : ""}`}>
-                        <li><a href="/">Kurikulum</a></li>
-                        <li><a href="/">Komunitas</a></li>
-                        <li><a href="/">Guru-guru</a></li>
-                        <li><a href="/">FAQs</a></li>
-                        <li className="mobile-btn"><a href="/" className="btn">Pesan Sekarang</a></li>
-                    </ul>
-                    <a href="/" className="btn desktop-btn">Pesan Sekarang</a>
-                </div>
-            </nav>
-
+           <nav className="navbar">
+      <div className="navbar-container">
+        <a href="/" className="logo">
+          <img src={logo} alt="LEVEL UP Logo" />
+        </a>
+        {/* Tombol Hamburger */}
+        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+<button
+          className={`menu-toggle ${isOpen ? "open" : ""}`}
+          onClick={toggleMenu}
+          aria-label="Toggle Navigation"
+        >
+          {isOpen ? "✖" : "☰"}
+        </button>
+        {/* Menu Links */}
+        <ul className={`nav-links ${isOpen ? "active" : ""}`}>
+          <li><a href="/">Kurikulum</a></li>
+          <li><a href="/">Komunitas</a></li>
+          <li><a href="/">Guru-guru</a></li>
+          <li><a href="/">FAQs</a></li>
+          <li className="mobile-btn"><a href="/" className="btn">Pesan Sekarang</a></li>
+        </ul>
+      </div>
+    </nav>
             <section className="image-section">
                 <div className="content-wrapper">
                     <div className="text-content">
@@ -83,7 +87,7 @@ const CodingForKids = () => {
                         <h2>Daftar Sekarang dan Dapatkan Sertifikatnya</h2>
 
                         {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
-<label>Kode Negara</label>
+                        <label>Kode Negara</label>
                         <div className="phone-input">
                             <span className="flag">🇮🇩 +62</span>
                             <input 
