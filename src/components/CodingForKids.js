@@ -174,8 +174,9 @@ const CodingForKids = () => {
                         </p>
                         <a href="/" className="read-more">Baca selengkapnya</a>
                     </div>
-                    {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
-<div className="section-image"></div>
+                    <div className="section-image">
+                        
+                    </div>
                 </div>
             </section>
         </>
