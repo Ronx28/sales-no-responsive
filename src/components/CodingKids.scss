@@ -9,29 +9,35 @@ margin: 0;
 padding: 0;
 }
 .navbar {
-  background: rgb(145, 144, 144);
   padding: 10px 10px;
   color: white;
   position: fixed;
   width: 100%;
+  height: 10.5vh;
   top: 0;
   left: 0;
   z-index: 100;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  box-sizing: border-box; /* Mencegah ukuran bertambah karena padding */
+  box-sizing: border-box;
+  background-color: transparent; /* Warna awal */
+  transition: background-color 0.1s ease-in-out;
+}
+
+.navbar.scrolled {
+  background-color: rgba(134, 134, 134, 0.8); /* Warna navbar saat di-scroll */
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%; /* Pastikan container tidak lebih besar dari navbar */
-  max-width: 1100px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* Tambahkan sedikit padding agar lebih responsif */
+  padding: 0 15px;
+  height: 100%;
   box-sizing: border-box;
 }
+
 
 /* Pastikan tidak ada scroll horizontal di seluruh halaman */
 body, html {
@@ -103,23 +109,38 @@ body, html {
   .menu-toggle {
     display: block;
     font-size: 30px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* Pastikan di atas */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .menu-toggle.open {
+    transform: rotate(180deg); /* Efek animasi putaran saat dibuka */
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     flex-direction: column;
     background-color: rgba(44, 62, 80, 0.9);
     position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
+    top: 0;
+    right: -100%; /* Geser ke luar layar */
+    width: 60%;
+    height: 100vh;
     padding: 20px 0;
     text-align: center;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
   }
 
   .nav-links.active {
-    display: flex;
+    right: 0; /* Muncul dari kanan */
   }
 
   .nav-links li {
@@ -134,6 +155,7 @@ body, html {
     display: block;
   }
 }
+
 
 // Image Section Styles (Background Image + Overlay)
 .image-section {
@@ -175,6 +197,11 @@ body, html {
   flex: 1;
   text-align: left;
   padding: 20px;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .text-content h1 {
@@ -333,7 +360,7 @@ body, html {
 
   .text-content {
     text-align: center;
-    padding: 5px;
+    padding: 10px;
   }
 
   .feature-list li {
@@ -427,7 +454,7 @@ body, html {
       align-items: center;
       width: 50%; 
       height: 400px; // Tinggi gambar dibuat lebih besar agar proporsional
-      background-image: url("/assets/ngoding.jpeg");
+      background-image: url("/assets/Anak.jpeg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;

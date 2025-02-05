@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // ✅ Perbaikan import useEffect
 import { QRCodeCanvas } from "qrcode.react"; // Menggunakan QRCodeCanvas
 import { v4 as uuidv4 } from "uuid"; // Import UUID untuk QR Code unik
 import "./CodingKids.scss";
@@ -11,6 +11,7 @@ const CodingForKids = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [showReceipt, setShowReceipt] = useState(false);
     const [qrValue, setQrValue] = useState("");
+    const [scrolled, setScrolled] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -41,33 +42,44 @@ const CodingForKids = () => {
             setShowReceipt(true);
         }
     };
+    // eslint-disable-next-line no-undef
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                // eslint-disable-next-line no-undef
+                setScrolled(true);
+            } else {
+                // eslint-disable-next-line no-undef
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
         <>
-           <nav className="navbar">
-      <div className="navbar-container">
+            <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+    <div className="navbar-container">
         <a href="/" className="logo">
-          <img src={logo} alt="LEVEL UP Logo" />
+            <img src={logo} alt="LEVEL UP Logo" />
         </a>
-        {/* Tombol Hamburger */}
         {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-<button
-          className={`menu-toggle ${isOpen ? "open" : ""}`}
-          onClick={toggleMenu}
-          aria-label="Toggle Navigation"
-        >
-          {isOpen ? "✖" : "☰"}
+        <button className={`menu-toggle ${isOpen ? "open" : ""}`} onClick={toggleMenu} aria-label="Toggle Navigation">
+            {isOpen ? "✖" : "☰"}
         </button>
-        {/* Menu Links */}
         <ul className={`nav-links ${isOpen ? "active" : ""}`}>
-          <li><a href="/">Kurikulum</a></li>
-          <li><a href="/">Komunitas</a></li>
-          <li><a href="/">Guru-guru</a></li>
-          <li><a href="/">FAQs</a></li>
-          <li className="mobile-btn"><a href="/" className="btn">Pesan Sekarang</a></li>
+            <li><a href="/">Kurikulum</a></li>
+            <li><a href="/">Komunitas</a></li>
+            <li><a href="/">Guru-guru</a></li>
+            <li><a href="/">FAQs</a></li>
+            <li className="mobile-btn"><a href="/" className="btn">Pesan Sekarang</a></li>
         </ul>
-      </div>
-    </nav>
+    </div>
+</nav>
             <section className="image-section">
                 <div className="content-wrapper">
                     <div className="text-content">
@@ -80,6 +92,11 @@ const CodingForKids = () => {
                             <li>✔️ Persiapan kompetisi sekolah</li>
                             <li>✔️ Untuk usia 6-16 tahun</li>
                         </ul>
+                        <div className="btn-container">
+                            <a href="/" className="btn left-btn">Explore</a>
+                            <a href="/" className="btn right-btn">Learn More</a>
+                        </div>
+
                     </div>
 
                     {/* Formulir Pendaftaran */}
@@ -115,7 +132,7 @@ const CodingForKids = () => {
                         </div>
 
                         {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
-<label>Apakah Anda memiliki laptop atau komputer?</label>
+                        <label>Apakah Anda memiliki laptop atau komputer?</label>
                         <div className="radio-group">
                             <label>
                                 <input 
@@ -138,7 +155,7 @@ const CodingForKids = () => {
                         </div>
 
                         {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-<button className="cta-button" onClick={handleShowReceipt}>Pesan Kelas Uji Coba Gratis</button>
+                        <button className="cta-button" onClick={handleShowReceipt}>Pesan Kelas Uji Coba Gratis</button>
                     </div>
                 </div>
             </section>
@@ -183,6 +200,7 @@ const CodingForKids = () => {
                     </div>
                 </div>
             </section>
+            
         </>
     );
 };
