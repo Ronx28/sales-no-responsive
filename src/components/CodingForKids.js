@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid"; // Import UUID untuk QR Code unik
 import "./CodingKids.scss";
 import logo from "../assets/Levelup.png";
 
+
 const CodingForKids = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedClass, setSelectedClass] = useState(null);
@@ -69,7 +70,7 @@ const CodingForKids = () => {
         </a>
         {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
         <button className={`menu-toggle ${isOpen ? "open" : ""}`} onClick={toggleMenu} aria-label="Toggle Navigation">
-            {isOpen ? "✖" : "☰"}
+            {isOpen ? "☰" : "☰"}
         </button>
         <ul className={`nav-links ${isOpen ? "active" : ""}`}>
             <li><a href="/">Kurikulum</a></li>
@@ -93,8 +94,7 @@ const CodingForKids = () => {
                             <li>✔️ Untuk usia 6-16 tahun</li>
                         </ul>
                         <div className="btn-container">
-                            <a href="/" className="btn left-btn">Explore</a>
-                            <a href="/" className="btn right-btn">Learn More</a>
+                            <a href="/" className="btn left-btn">Pesan Kelas</a>
                         </div>
 
                     </div>
@@ -160,26 +160,89 @@ const CodingForKids = () => {
                 </div>
             </section>
 
-            {/* Modal Struk Pembayaran dengan QR Code */}
-            {showReceipt && selectedClassData && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <h2>Struk Pembayaran</h2>
-                        <p><strong>Nomor WhatsApp:</strong> {phoneNumber}</p>
-                        <p><strong>Kelas yang Dipilih:</strong> Kelas {selectedClassData.kelas}</p>
-                        <p><strong>Harga:</strong> {selectedClassData.harga}</p>
-                        <p><strong>Memiliki Laptop:</strong> {hasLaptop ? "Ya" : "Tidak"}</p>
+            <section className="mobile-form">
+            <div className="container-mbl">
+                <h2>Daftar Sekarang dan Dapatkan Sertifikatnya</h2>
 
-                        {/* QR Code untuk Pembayaran */}
-                        <div className="qr-code">
-                            <h3>Scan QR Code untuk Pembayaran</h3>
-                            <QRCodeCanvas value={qrValue} size={150} />
-                        </div>
-
-                        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-<button className="close-button" onClick={() => setShowReceipt(false)}>Tutup</button>
-                    </div>
+                {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
+                <label>Kode Negara</label>
+                <div className="phone-input-mbl">
+                    <span className="flag-mbl">🇮🇩 +62</span>
+                    <input 
+                    type="tel" 
+                    placeholder="Nomor handphone" 
+                    value={phoneNumber} 
+                    onChange={(e) => setPhoneNumber(e.target.value)} 
+                    />
                 </div>
+
+                <p>Silakan bagikan nomor yang Anda gunakan untuk WhatsApp</p>
+
+                <label htmlFor="class-selection-mbl">Pilih Kelas Anak</label>
+                <div id="class-selection-mbl" className="class-selection-mbl">
+                    {classOptions.map(({ kelas, harga }) => (
+            <button
+                key={`kelas-${kelas}`}
+                type="button"
+                className={selectedClass === kelas ? "selected" : ""}
+                onClick={() => setSelectedClass(kelas)}
+            >
+                Kelas {kelas} <br /> <span className="price">{harga}</span>
+            </button>
+            ))}
+        </div>
+
+        {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
+        <label>Apakah Anda memiliki laptop atau komputer?</label>
+        <div className="radio-group-mbl">
+            <label>
+            <input 
+                type="radio" 
+                name="laptop" 
+                checked={hasLaptop} 
+                onChange={() => setHasLaptop(true)} 
+            />
+            Ya
+            </label>
+            <label>
+            <input 
+                type="radio" 
+                name="laptop" 
+                checked={!hasLaptop} 
+                onChange={() => setHasLaptop(false)} 
+            />
+            Tidak
+            </label>
+        </div>
+
+        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+        <button className="cta-button-mbl" onClick={handleShowReceipt}>
+            Pesan Kelas Uji Coba Gratis
+        </button>
+        </div>
+
+                    </section>
+
+                    {/* Modal Struk Pembayaran dengan QR Code */}
+                    {showReceipt && selectedClassData && (
+                        <div className="modal">
+                            <div className="modal-content">
+                                <h2>Struk Pembayaran</h2>
+                                <p><strong>Nomor WhatsApp:</strong> {phoneNumber}</p>
+                                <p><strong>Kelas yang Dipilih:</strong> Kelas {selectedClassData.kelas}</p>
+                                <p><strong>Harga:</strong> {selectedClassData.harga}</p>
+                                <p><strong>Memiliki Laptop:</strong> {hasLaptop ? "Ya" : "Tidak"}</p>
+
+                                {/* QR Code untuk Pembayaran */}
+                                <div className="qr-code">
+                                    <h3>Scan QR Code untuk Pembayaran</h3>
+                                    <QRCodeCanvas value={qrValue} size={150} />
+                                </div>
+
+                                {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+        <button className="close-button" onClick={() => setShowReceipt(false)}>Tutup</button>
+                            </div>
+                        </div>
             )}
 
             <section className="why-choose-us">
