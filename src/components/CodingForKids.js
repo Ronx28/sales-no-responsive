@@ -63,7 +63,7 @@ const CodingForKids = () => {
 
     return (
         <>
-            <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+<nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
     <div className="navbar-container">
         <a href="/" className="logo">
             <img src={logo} alt="LEVEL UP Logo" />
@@ -81,6 +81,7 @@ const CodingForKids = () => {
         </ul>
     </div>
 </nav>
+
             <section className="image-section">
                 <div className="content-wrapper">
                     <div className="text-content">
@@ -94,11 +95,12 @@ const CodingForKids = () => {
                             <li>✔️ Untuk usia 6-16 tahun</li>
                         </ul>
                         <div className="btn-container">
-                            <a href="/" className="btn left-btn">Pesan Kelas</a>
+                            <a href="#container-box" className="btn left-btn">Pesan Kelas</a>
                         </div>
-
+                        <div className="btn-mobile">
+                            <a href="#container-mbl" className="btn left-btn">Pesan Kelas</a>
+                        </div>
                     </div>
-
                     {/* Formulir Pendaftaran */}
                     <div className="container-box">
                         <h2>Daftar Sekarang dan Dapatkan Sertifikatnya</h2>
@@ -160,6 +162,8 @@ const CodingForKids = () => {
                 </div>
             </section>
 
+
+            {/* Section Mobile Form */}
             <section className="mobile-form">
             <div className="container-mbl">
                 <h2>Daftar Sekarang dan Dapatkan Sertifikatnya</h2>
